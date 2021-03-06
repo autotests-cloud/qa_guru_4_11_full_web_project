@@ -1,5 +1,6 @@
 package tests;
 
+import config.ConfigHelper;
 import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -19,7 +20,8 @@ public class LoginTests extends TestBase {
         open("");
 
         $(".android.login-button").click();
-        googleAuthPage.login("purevtest1", "purevtest1#_aA");
+        googleAuthPage.login(ConfigHelper.getGoogleUsername(),
+                ConfigHelper.getGooglePassword());
 
         $(by("data-test-id", "onboarding-geolocation-access")).shouldBe(visible);
     }
